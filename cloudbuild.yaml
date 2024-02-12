@@ -33,14 +33,14 @@ steps:
   #   args: ['build', '-t', 
   #          'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/prajesh-dns/cloud-build/myimage:${SHORT_SHA}', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/prajesh-dns/cloud--build/myimage:${SHORT_SHA}', '.']
 
   # [END cloudbuild_python_image_yaml]
 
   # [START cloudbuild_python_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/prajesh-dns/cloud-build/myimage:${SHORT_SHA}']
+    args: ['push', 'us-central1-docker.pkg.dev/prajesh-dns/cloud--build/myimage:${SHORT_SHA}']
  
   # [END cloudbuild_python_push_yaml]
   
