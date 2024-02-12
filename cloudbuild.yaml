@@ -33,14 +33,14 @@ steps:
   #   args: ['build', '-t', 
   #          'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/prajesh-dns/cloud--build/myimage:${SHORT_SHA}', '.']
+    args: ['build', '-t', 'asia-east1-docker.pkg.dev/prajesh-dns/cloud--build/myimage:${SHORT_SHA}', '.']
 
   # [END cloudbuild_python_image_yaml]
 
   # [START cloudbuild_python_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/prajesh-dns/cloud--build/myimage:${SHORT_SHA}']
+    args: ['push', 'asia-east1-docker.pkg.dev/prajesh-dns/cloud--build/myimage:${SHORT_SHA}']
  
   # [END cloudbuild_python_push_yaml]
   
@@ -48,8 +48,8 @@ steps:
   # Deploy to Cloud Run
   - name: google/cloud-sdk
     args: ['gcloud', 'run', 'deploy', 'helloworld-${SHORT_SHA}', 
-           '--image=us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}', 
-           '--region', 'us-central1', '--platform', 'managed', 
+           '--image=asia-east1-docker.pkg.dev/${PROJECT_ID}/cloud--build/myimage:${SHORT_SHA}', 
+           '--region', 'asia-east1', '--platform', 'managed', 
            '--allow-unauthenticated']
   # [END cloudbuild_python_deploy_yaml]
   
@@ -63,6 +63,6 @@ artifacts:
 # [END cloudbuild_python_logs_yaml]
 # Store images in Google Artifact Registry 
 images:
-  - us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/myimage:${SHORT_SHA}
+  - asia-east1-docker.pkg.dev/${PROJECT_ID}/cloud--build/myimage:${SHORT_SHA}
 # [END cloudbuild_python_yaml]
 
